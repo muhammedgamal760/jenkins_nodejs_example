@@ -9,6 +9,7 @@ pipeline {
         }
         stage('docker build'){
             steps{
+                //adding credentials
                 withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                 sh "docker login -u ${env.DOCKER_USER} -p ${env.DOCKER_PASS}"}
                 //building docker file
@@ -17,8 +18,6 @@ pipeline {
         }
         stage('docker push'){
             steps{
-                //adding credentials
-                
                 //pushing image
                 sh 'docker push muhammedgamal/jenkins'
             
@@ -27,7 +26,7 @@ pipeline {
         stage('docker run'){
             steps{
                 //run docker
-                sh 'docker run -p 3000:3000 muhammedgamal/jenkins'
+                sh 'docker run -d -p 3000:3000 muhammedgamal/jenkins'
             }
         }
         
