@@ -5,6 +5,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
+                sh 'sudo chown -R jenkins:jenkins jobs'
                 sh 'sudo chown -R jenkins:jenkins /var/lib/jenkins/'
                 sh 'docker build . -t ${username}/jenkins_sprints:v1.0'
                 sh 'docker login -u ${username} -p ${pass}'
