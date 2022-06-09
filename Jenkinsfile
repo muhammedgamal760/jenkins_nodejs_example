@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo chown -R jenkins:jenkins jobs'
+                node('jenkins-slave'){
+                sh 'sudo chown -R jenkins:jenkins jobs'}
                 // Get some code from a GitHub repository
                 withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
