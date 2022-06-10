@@ -24,7 +24,7 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
-                sh 'docker run -p 3000:3000 --privileged=true -e RDS_HOSTNAME="jimmy.cdmkspliwudw.eu-central-1.rds.amazonaws.com" -e RDS_USERNAME="jimmy" -e RDS_PASSWORD="jimmyyyy" -e RDS_PORT="3306" -e REDIS_HOSTNAME="jimmyredis.fiqmwz.0001.euc1.cache.amazonaws.com:6379" -e REDIS_PORT="6379" REDIS_USERNAME="jimmy" -e REDIS_PASSWORD="jimmyjimmyjimmyjimmyjimmy" -d ${username}/jenkins_sprints:v1.0'
+                sh 'docker run -p 3000:3000 --privileged=true -e RDS_HOSTNAME="jimmy.cdmkspliwudw.eu-central-1.rds.amazonaws.com" -e RDS_USERNAME="jimmy" -e RDS_PASSWORD="jimmyyyy" -e RDS_PORT="3306" -e REDIS_HOSTNAME="jimmyredis.fiqmwz.0001.euc1.cache.amazonaws.com:6379" -e REDIS_PORT="6379" -e REDIS_USERNAME="jimmy" -e REDIS_PASSWORD="jimmyjimmyjimmyjimmyjimmy" -d ${username}/jenkins_sprints:v1.0'
                 }
             }
             }
