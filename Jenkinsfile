@@ -8,7 +8,7 @@ pipeline {
                 git branch: 'rds_redis', url: "https://github.com/nouranhamdy/jenkins_nodejs_example.git" 
                 sh 'sudo chmod 777 /var/run/docker.sock'
                 sh 'docker login -u ${username} -p ${pass}'
-                sh 'docker build . -f ../dockerfile -t ${username}/jenkins_sprints:v1.0'
+                sh 'docker build . -f dockerfile -t ${username}/jenkins_sprints:v1.0'
                 sh 'docker push ${username}/jenkins_sprints:v1.0'
                 }
             }
