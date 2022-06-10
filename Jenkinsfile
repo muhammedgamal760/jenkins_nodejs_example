@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
-                git 'https://github.com/muhammedgamal760/jenkins_nodejs_example.git'
+                git branch: 'rds_redis', url: "https://github.com/nouranhamdy/jenkins_nodejs_example.git" 
                 sh 'sudo chmod 777 /var/run/docker.sock'
                 sh 'docker login -u ${username} -p ${pass}'
                 sh 'docker build . -f ../dockerfile -t ${username}/jenkins_sprints:v1.0'
