@@ -1,5 +1,11 @@
 pipeline {
     agent none
+    environment {
+        REDIS_SERVER_FQDN = "localhost"
+        REDIS_SERVER_PORT = "3000"
+        REDIS_USER =  "root"
+        REDIS_PASS = "root"
+    }
     stages {
         stage('Build') {
             steps {
@@ -16,7 +22,7 @@ pipeline {
         } 
         stage ('deploy'){
             steps{
-                withCredentials([usernamePassword(credentialsId:"redis",usernameVariable:"username",passwordVariable:"pass")]){
+                withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
                 sh 'docker run -p 3000:3000 -d ${username}/jenkins_sprints:v1.0'
                 }
