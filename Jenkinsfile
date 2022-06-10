@@ -3,8 +3,8 @@ pipeline {
     environment {
         REDIS_SERVER_FQDN = "localhost"
         REDIS_SERVER_PORT = "3000"
-        REDIS_USER =  "root"
-        REDIS_PASS = "root"
+        REDIS_USER =  "jimmy"
+        REDIS_PASS = "jimmyjimmyjimmyjimmyjimmy"
     }
     stages {
         stage('Build') {
