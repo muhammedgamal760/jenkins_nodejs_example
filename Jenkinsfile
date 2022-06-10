@@ -16,7 +16,7 @@ pipeline {
         } 
         stage ('deploy'){
             steps{
-                withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
+                withCredentials([usernamePassword(credentialsId:"redis",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
                 sh 'docker run -p 3000:3000 -d ${username}/jenkins_sprints:v1.0'
                 }
