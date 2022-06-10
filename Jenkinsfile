@@ -24,7 +24,7 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"username",passwordVariable:"pass")]){
                 node('jenkins-slave'){
-                sh 'docker run -p 3000:3000 --privileged=true --env-file=/agent/env.list -d ${username}/jenkins_sprints:v1.0'
+                sh 'docker run -p 3000:3000 --privileged=true --env-file=/var/jenkins_home/nodeapp/env.list -d ${username}/jenkins_sprints:v1.0'
                 }
             }
             }
