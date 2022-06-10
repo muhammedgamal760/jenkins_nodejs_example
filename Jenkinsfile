@@ -7,7 +7,7 @@ pipeline {
                 node('jenkins-slave'){
                 sh 'sudo chmod 777 /var/run/docker.sock'
                 sh 'docker login -u ${username} -p ${pass}'
-                sh 'docker build . -f dockerfile -t ${username}/jenkins_sprints:v1.0'
+                sh 'docker build . -f ../dockerfile -t ${username}/jenkins_sprints:v1.0'
                 sh 'docker push ${username}/jenkins_sprints:v1.0'
                 }
             }
